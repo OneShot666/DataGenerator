@@ -8,6 +8,14 @@ class DataRequestsGiver:
         pass
 
     @staticmethod
+    def get_all_attributes_request(table_name):
+        return f"PRAGMA table_info({table_name});"
+
+    @staticmethod
+    def get_all_tables_request():
+        return f"SELECT name FROM sqlite_master WHERE type='table';"
+
+    @staticmethod
     def get_add_table_requests(table_name, table_attributes):
         request = f"CREATE TABLE IF NOT EXISTS {table_name} ("
         for att in table_attributes:
